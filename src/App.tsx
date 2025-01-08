@@ -1,15 +1,18 @@
 import React, { FunctionComponent } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// Pages
+import HomePage from './pages/home/home.page';
 
-// Components
-import Header from './components/header/header.components';
-
-interface AppProps {
-  message?: string;
-}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const App: FunctionComponent<AppProps> = ({ message }) => {
-  return <Header/>;
+const App: FunctionComponent = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
