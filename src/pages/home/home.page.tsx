@@ -1,16 +1,18 @@
-import React from "react"
+import React from 'react'
+import Header from '../../components/header/header.components'
+import Categories from '../../components/header/categories/categories.components'
 
-//components 
-import Header from "../../components/header/header.components";
-import Categories from "../../components/header/categories/categories.components";
+// Components
+
 
 const HomePage = () => {
-    return (
-        <div>
-           <Header/>;   
-           <Categories/>;
-        </div>
-    )
+  return (
+    <>
+      <Header />
+
+      <Categories />
+    </>
+  )
 }
- 
-export default HomePage;
+
+export default HomePage
