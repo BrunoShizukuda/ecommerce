@@ -1,26 +1,25 @@
-import React from "react";
-//utlities
-import { FunctionComponent } from "react";
-import Category from "../types/category.types";
+import React from 'react'
+import { FunctionComponent } from 'react'
 
-import './category-item.styles.css';
+// Utilities
+import Category from '../types/category.types'
+
+// Styles
+import { CategoryItemContainer, CategoryName } from './category-item.styles'
 
 interface CategoryItemProps {
-    category: Category
+  category: Category
 }
 
-
-const CategoryItem: FunctionComponent<CategoryItemProps> = ({category}) => {
-    return (
-        <div className="category-item-container"
-            style={{ backgroundImage: `url(${category.imageUrl})`}} >
-            <div className="category-name">
-                <p>{category.displayName}</p>
-                <p>Explorar</p>
-            </div>
-        </div>
-    )
+const CategoryItem: FunctionComponent<CategoryItemProps> = ({ category }) => {
+  return (
+    <CategoryItemContainer backgroundImage={category.imageUrl}>
+      <CategoryName>
+        <p>{category.displayName}</p>
+        <p>Explorar</p>
+      </CategoryName>
+    </CategoryItemContainer>
+  )
 }
-   
- 
-export default CategoryItem;
+
+export default CategoryItem
