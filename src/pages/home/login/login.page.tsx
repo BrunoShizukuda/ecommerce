@@ -9,6 +9,7 @@ import Header from "../../../components/header/header.components";
 // icons
 import {FiLogIn} from "react-icons/fi";
 import { BsGoogle } from "react-icons/bs";
+import CustomInput from "../../../components/custom-input/custom-input.component";
 
 
 const LoginPage = () => {
@@ -25,11 +26,13 @@ const LoginPage = () => {
                         <LoginSubtitle>ou entre com seu email</LoginSubtitle>
 
                         <LoginInputContainer>
-                            {/*  email input */}
+                            <p>E-mail</p>
+                           <CustomInput placeholder="Digite seu email"/>
                         </LoginInputContainer>
 
                         <LoginInputContainer>
-                            {/*  password input */}
+                            <p>Senha</p>
+                            <CustomInput placeholder="Digite sua senha"/>
                         </LoginInputContainer>
                         <CustomButton startIcon={<FiLogIn size={18}/>}>Entrar</CustomButton>
                 </LoginContent>
