@@ -1,6 +1,8 @@
 import React from "react";
+import {useForm} from "react-hook-form";
 // styles
 import { LoginContainer, LoginContent, LoginHeadLine, LoginInputContainer, LoginSubtitle } from "./login.styles";
+
 
 // componentes
 import CustomButton from "../../../components/custom-button/custom.button.components";
@@ -13,6 +15,15 @@ import CustomInput from "../../../components/custom-input/custom-input.component
 
 
 const LoginPage = () => {
+    const {register,
+         formState: {errors},
+         handleSubmit,
+        } = useForm();
+
+        const handleSubmitPress = (data: any) => {
+            console.log({data});
+        }
+
     return ( 
         <>
             <Header />
@@ -27,14 +38,14 @@ const LoginPage = () => {
 
                         <LoginInputContainer>
                             <p>E-mail</p>
-                           <CustomInput placeholder="Digite seu email"/>
+                           <CustomInput hasError={!!errors?.email} placeholder="Digite seu email" {...register('email', {required: true})}/>
                         </LoginInputContainer>
 
                         <LoginInputContainer>
                             <p>Senha</p>
-                            <CustomInput placeholder="Digite sua senha"/>
+                            <CustomInput hasError={!!errors?.password} placeholder="Digite sua senha" {...register('password', {required:true})}/>
                         </LoginInputContainer>
-                        <CustomButton startIcon={<FiLogIn size={18}/>}>Entrar</CustomButton>
+                        <CustomButton startIcon={<FiLogIn size={18}/>} onClick={() => handleSubmit(handleSubmitPress)}>Entrar</CustomButton>
                 </LoginContent>
             </LoginContainer>
         </>
