@@ -1,6 +1,6 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-// styles
+import validator from 'validator'
 import { LoginContainer, LoginContent, LoginHeadLine, LoginInputContainer, LoginSubtitle } from "./login.styles";
 
 
@@ -12,6 +12,7 @@ import Header from "../../../components/header/header.components";
 import {FiLogIn} from "react-icons/fi";
 import { BsGoogle } from "react-icons/bs";
 import CustomInput from "../../../components/custom-input/custom-input.component";
+import InputErrorMessage from "../../../components/input-error-message/input-error-message";
 
 
 const LoginPage = () => {
@@ -38,12 +39,28 @@ const LoginPage = () => {
 
                         <LoginInputContainer>
                             <p>E-mail</p>
-                           <CustomInput hasError={!!errors?.email} placeholder="Digite seu email" {...register('email', {required: true})}/>
+                           <CustomInput hasError={!!errors?.email} placeholder="Digite seu email" {...register('email', {required: true, validate: (value) => {
+                                return validator.isEmail(value)
+                           }})}/>
+
+                           {errors?.email?.type === 'required' && (
+                                <InputErrorMessage>O email é obrigatório.</InputErrorMessage>
+                            )}
+
+                            {errors?.email?.type === 'validate' && (
+                                <InputErrorMessage>
+                                    Por favor, insira um e-mail válido.
+                                </InputErrorMessage>
+                            )}
                         </LoginInputContainer>
 
                         <LoginInputContainer>
                             <p>Senha</p>
                             <CustomInput hasError={!!errors?.password} placeholder="Digite sua senha" {...register('password', {required:true})}/>
+
+                            {errors?.password?.type === 'required' && (
+                                <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
+                            )}
                         </LoginInputContainer>
                         <CustomButton startIcon={<FiLogIn size={18}/>} onClick={() => handleSubmit(handleSubmitPress)}>Entrar</CustomButton>
                 </LoginContent>
