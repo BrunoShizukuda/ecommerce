@@ -56,13 +56,21 @@ const LoginPage = () => {
 
                         <LoginInputContainer>
                             <p>Senha</p>
-                            <CustomInput hasError={!!errors?.password} placeholder="Digite sua senha" {...register('password', {required:true})}/>
+                            <CustomInput hasError={!!errors?.password}
+                             placeholder="Digite sua senha"
+                             type="password"
+                              {...register('password', {required:true})}/>
 
                             {errors?.password?.type === 'required' && (
                                 <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
                             )}
                         </LoginInputContainer>
-                        <CustomButton startIcon={<FiLogIn size={18}/>} onClick={() => handleSubmit(handleSubmitPress)}>Entrar</CustomButton>
+                        <CustomButton
+                            startIcon={<FiLogIn size={18}/>}
+                            onClick={() => handleSubmit(handleSubmitPress)()}>
+                            Entrar
+                        </CustomButton>
+
                 </LoginContent>
             </LoginContainer>
         </>
